@@ -4,23 +4,19 @@ export default function About() {
   const experiences = [
     {
       title: 'Backend & Database Management',
-      description: 'Developed scalable backend logic using Python and MySQL, implementing APIs, authentication, and structured data management.',
-      image: '/assets/about/backend.png',
+      description: 'Backend & DB: Python, MySQL, APIs, authentication',
     },
     {
       title: 'Web Development',
-      description: 'Created responsive web applications using HTML, CSS, JavaScript, and Python backend integration, including AI-powered healthcare and analytics platforms.',
-      image: '/assets/about/web-dev.png',
+      description: 'Web Dev: HTML, CSS, JavaScript, Python',
     },
     {
       title: 'Artificial Intelligence & Computer Vision',
-      description: 'Built AI solutions using Python and OpenCV, including face detection, recognition, and a JARVIS-like voice assistant with system automation.',
-      image: '/assets/about/ai-vision.png',
+      description: 'AI & CV: Python, OpenCV, face recognition',
     },
     {
       title: 'Data Science & Analytics',
-      description: 'Analyzed real-world datasets and developed interactive dashboards using Streamlit and Plotly to extract insights from projects like EAMCET Counseling and HR Analytics.',
-      image: '/assets/about/data-science.png',
+      description: 'Data Science: Streamlit, Plotly, data analysis',
     },
   ];
 
@@ -40,15 +36,8 @@ export default function About() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {experiences.map((exp, index) => (
-            <div key={index} className="flex flex-col items-center text-center group">
-              <div className="w-48 h-48 mb-6 transition-transform duration-300 group-hover:scale-105">
-                <img
-                  src={exp.image}
-                  alt={exp.title}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">{exp.title}</h3>
+            <div key={index} className="flex flex-col text-left group">
+              <h3 className="text-lg font-bold text-gray-900 mb-3">{exp.title}</h3>
               <p className="text-sm text-gray-600 leading-relaxed">
                 {exp.description}
               </p>
