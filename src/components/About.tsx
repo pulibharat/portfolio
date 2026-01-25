@@ -1,47 +1,79 @@
 'use client';
 
+import { motion } from 'framer-motion';
+
 export default function About() {
   const experiences = [
     {
-      title: 'Backend & Database Management',
+      title: 'Database Management',
       description: 'Backend & DB: Python, MySQL, APIs, authentication',
+      image: '/assets/about/backend.png',
     },
     {
       title: 'Web Development',
       description: 'Web Dev: HTML, CSS, JavaScript, Python',
+      image: '/assets/about/web-dev.png',
     },
     {
-      title: 'Artificial Intelligence & Computer Vision',
+      title: 'AI & Computer Vision',
       description: 'AI & CV: Python, OpenCV, face recognition',
+      image: '/assets/about/ai-vision.png',
     },
     {
       title: 'Data Science & Analytics',
       description: 'Data Science: Streamlit, Plotly, data analysis',
+      image: '/assets/about/data-science.png',
     },
   ];
 
   return (
     <section id="about" className="py-20 bg-white px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-blue-900 mb-8 text-center">About Me</h2>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold text-slate-900 mb-8 text-center"
+        >
+          About Me
+        </motion.h2>
         
-        <div className="max-w-4xl mx-auto text-center mb-16 space-y-6">
-          <p className="text-lg text-gray-700 leading-relaxed font-medium">
-            I’m <span className="font-bold text-black">Bharat</span>, a B.Tech <span className="font-bold text-gray-900">Computer Science & Mathematics (CSM)</span> student with a strong interest in <span className="font-bold text-gray-900">Artificial Intelligence</span>, <span className="font-bold text-gray-900">Data Science</span>, and <span className="font-bold text-gray-900">Computer Vision</span>. I enjoy building real-world, impact-driven projects—from <span className="font-bold text-gray-900">AI assistants</span> and <span className="font-bold text-gray-900">face recognition systems</span> to <span className="font-bold text-gray-900">interactive data dashboards</span> and <span className="font-bold text-gray-900">web applications</span>.
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="max-w-4xl mx-auto text-center mb-16 space-y-6"
+        >
+          <p className="text-lg text-slate-700 leading-relaxed font-medium">
+            I’m <span className="font-bold text-black">Bharat</span>, a B.Tech <span className="font-bold text-slate-900">CSM</span> student passionate about <span className="font-bold text-slate-900">AI</span>, <span className="font-bold text-slate-900">Data Science</span>, and <span className="font-bold text-slate-900">Computer Vision</span>. I build impact-driven projects like <span className="font-bold text-slate-900">AI assistants</span>, <span className="font-bold text-slate-900">face recognition systems</span>, <span className="font-bold text-slate-900">data dashboards</span>, and <span className="font-bold text-slate-900">web apps</span>, with a focus on problem-solving and scalable solutions.
           </p>
-          <p className="text-lg text-gray-700 leading-relaxed font-medium">
-            I’m passionate about <span className="font-bold text-gray-900">problem-solving</span>, <span className="font-bold text-gray-900">clean code</span>, and <span className="font-bold text-gray-900">turning data into insights</span>, and I continuously learn new tools and technologies to create smart, scalable tech solutions.
-          </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {experiences.map((exp, index) => (
-            <div key={index} className="flex flex-col text-left group">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">{exp.title}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
+            <motion.div 
+              key={index} 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{ y: -10 }}
+              className="flex flex-col items-center text-center group"
+            >
+              <div className="w-48 h-48 mb-6 transition-transform duration-300">
+                <img
+                  src={exp.image}
+                  alt={exp.title}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">{exp.title}</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
                 {exp.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

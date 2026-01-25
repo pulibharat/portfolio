@@ -60,14 +60,14 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-white px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-20 bg-slate-50 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold text-blue-600 mb-12 text-center">Experience</h2>
+        <h2 className="text-4xl font-bold text-blue-700 mb-12 text-center">Experience</h2>
         <div className="space-y-6">
           {experiences.map((exp) => (
             <div
               key={exp.id}
-              className="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow p-6 sm:p-7"
+              className="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-lg transition-shadow p-6 sm:p-7"
             >
               <div className="flex gap-5 sm:gap-6 items-start">
                 <img
@@ -77,10 +77,10 @@ export default function Experience() {
                 />
 
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 leading-snug">{exp.position}</h3>
-                  <p className="text-blue-600 font-semibold">{exp.company}</p>
+                  <h3 className="text-xl font-bold text-slate-900 leading-snug">{exp.position}</h3>
+                  <p className="text-blue-700 font-semibold">{exp.company}</p>
 
-                  <div className="mt-3 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-gray-600 text-sm font-medium">
+                  <div className="mt-3 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-slate-600 text-sm font-medium">
                     <div className="flex items-center gap-2">
                       <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -111,13 +111,13 @@ export default function Experience() {
                     </div>
                   </div>
 
-                  <p className="mt-4 text-gray-700 leading-relaxed font-medium">{exp.description}</p>
+                  <p className="mt-4 text-slate-700 leading-relaxed font-medium">{exp.description}</p>
 
                   <div className="mt-4 flex flex-wrap gap-2">
                     {exp.skills.map((skill, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-blue-100 text-blue-600 text-xs rounded-full font-semibold"
+                        className="px-3 py-1 bg-white text-blue-700 border border-slate-200 text-xs rounded-full font-semibold shadow-sm"
                       >
                         {skill}
                       </span>

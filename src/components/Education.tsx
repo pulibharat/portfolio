@@ -23,12 +23,12 @@ export default function Education() {
   return (
     <section id="education" className="py-20 bg-white px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold text-blue-600 mb-12 text-center">Education</h2>
+        <h2 className="text-4xl font-bold text-blue-700 mb-12 text-center">Education</h2>
         <div className="space-y-8">
           {education.map((edu) => (
             <div
               key={edu.id}
-              className="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow p-6 sm:p-8"
+              className="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-lg transition-shadow p-6 sm:p-8"
             >
               <div className="flex gap-5 sm:gap-6 items-start">
                 <img
@@ -38,12 +38,12 @@ export default function Education() {
                 />
 
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
                     {edu.school}
                   </h3>
-                  <p className="text-gray-600 mt-1 font-bold">{edu.program}</p>
+                  <p className="text-slate-600 mt-1 font-bold">{edu.program}</p>
 
-                  <div className="mt-4 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-gray-600 text-sm font-medium">
+                  <div className="mt-4 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-slate-600 text-sm font-medium">
                     {edu.period && (
                       <div className="flex items-center gap-2">
                         <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

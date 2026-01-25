@@ -23,11 +23,11 @@ export default function Achievements() {
   ];
 
   return (
-    <section id="achievements" className="py-20 bg-gray-50 px-4 sm:px-6 lg:px-8">
+    <section id="achievements" className="py-20 bg-white px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-blue-900 mb-3">Achievements</h2>
-          <p className="text-gray-600 font-medium">
+          <h2 className="text-4xl font-bold text-slate-900 mb-3">Achievements</h2>
+          <p className="text-slate-600 font-medium">
             A showcase of my leadership roles, mentorships, and competitive achievements.
           </p>
         </div>
@@ -36,10 +36,10 @@ export default function Achievements() {
           {achievements.map((achievement) => (
             <div
               key={achievement.id}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex items-start gap-5"
+              className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition-shadow flex items-start gap-5"
             >
               {/* Logo */}
-              <div className="w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden border border-gray-100 bg-white flex items-center justify-center p-1">
+              <div className="w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden border border-slate-100 bg-white flex items-center justify-center p-1">
                 <img
                   src={achievement.logo}
                   alt={achievement.title}
@@ -49,23 +49,23 @@ export default function Achievements() {
 
               {/* Content */}
               <div className="flex-1 min-w-0">
-                <h3 className="text-lg font-bold text-gray-900 leading-tight mb-1">
+                <h3 className="text-lg font-bold text-slate-900 leading-tight mb-1">
                   {achievement.title}
                 </h3>
-                <p className="text-gray-500 font-medium text-sm mb-2">
+                <p className="text-slate-500 font-medium text-sm mb-2">
                   {achievement.organization}
                 </p>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
+                <p className="text-slate-600 text-sm mb-4 leading-relaxed line-clamp-3">
                   {achievement.description}
                 </p>
 
                 {/* Footer: Badge + Date */}
                 <div className="flex items-center justify-between mt-auto">
-                  <span className="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-full border border-blue-100">
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full border border-blue-100">
                     {achievement.type}
                   </span>
                   
-                  <div className="flex items-center gap-1.5 text-gray-400 text-xs font-medium">
+                  <div className="flex items-center gap-1.5 text-slate-400 text-xs font-medium">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
