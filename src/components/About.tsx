@@ -73,22 +73,22 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="group p-12 glass rounded-[3.5rem] hover-glow relative overflow-hidden flex flex-col items-start gap-12"
+            className="group p-8 md:p-12 glass rounded-3xl md:rounded-[3.5rem] hover-glow relative overflow-hidden flex flex-col items-start gap-6 md:gap-12"
           >
-             <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-zinc-300 group-hover:bg-black group-hover:text-white transition-all duration-700 shadow-xl">
+             <div className="w-12 h-12 md:w-14 md:h-14 glass shrink-0 rounded-2xl flex items-center justify-center text-zinc-300 group-hover:bg-black group-hover:text-white transition-all duration-700 shadow-xl">
                 {cat.icon}
              </div>
              
-             <div className="space-y-6">
-                <span className="inline-block px-5 py-2 glass text-[10px] uppercase font-black tracking-[0.3em] rounded-full text-zinc-400 group-hover:text-black transition-colors">
+             <div className="space-y-4 md:space-y-6">
+                <span className="inline-block px-4 md:px-5 py-1.5 md:py-2 glass text-[9px] md:text-[10px] uppercase font-black tracking-[0.3em] rounded-full text-zinc-400 group-hover:text-black transition-colors">
                   {cat.tag}
                 </span>
                 
-                <div className="space-y-4">
-                  <h3 className="text-4xl font-black tracking-tight group-hover:text-gradient transition-all duration-700">
+                <div className="space-y-3 md:space-y-4">
+                  <h3 className="text-3xl md:text-4xl font-black tracking-tight group-hover:text-gradient transition-all duration-700">
                     {cat.title}
                   </h3>
-                  <p className="text-secondary text-xl font-medium leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+                  <p className="text-secondary text-base md:text-xl font-medium leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
                     {cat.description}
                   </p>
                 </div>

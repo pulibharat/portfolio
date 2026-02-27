@@ -1,9 +1,16 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState("All");
+
+  useEffect(() => {
+    // Automatically select "Programming" when viewing on a phone
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      setActiveCategory("Programming");
+    }
+  }, []);
 
   const skillCategories = [
     {
