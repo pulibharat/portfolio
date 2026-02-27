@@ -29,69 +29,67 @@ export default function Skills() {
   ];
 
   const filteredSkills = activeCategory === "All"
-    ? skillCategories.flatMap(category => category.skills)
+    ? [...new Set(skillCategories.flatMap(category => category.skills))]
     : skillCategories.find(category => category.title === activeCategory)?.skills || [];
 
   return (
-    <section id="skills" className="py-20 bg-slate-50 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center text-slate-900 mb-12"
+    <div className="space-y-16">
+      {/* Category Filters */}
+      <div className="flex flex-wrap gap-2 md:gap-3 justify-center md:justify-start">
+        <button
+          onClick={() => setActiveCategory("All")}
+          suppressHydrationWarning
+          className={`px-4 py-2.5 md:px-8 md:py-3.5 rounded-full md:rounded-[1.25rem] text-[9px] sm:text-[10px] md:text-xs uppercase font-bold tracking-[0.1em] md:tracking-[0.15em] transition-all duration-500 ${
+            activeCategory === "All"
+              ? "bg-black text-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] scale-100 md:scale-105"
+              : "glass text-secondary hover:text-black"
+          }`}
         >
-          Skills Section
-        </motion.h2>
-        
-        {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          All
+        </button>
+        {skillCategories.map((category) => (
           <button
-            onClick={() => setActiveCategory("All")}
-            className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${
-              activeCategory === "All"
-                ? "bg-blue-700 text-white shadow-lg scale-105"
-                : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+            key={category.title}
+            onClick={() => setActiveCategory(category.title)}
+            suppressHydrationWarning
+            className={`px-4 py-2.5 md:px-8 md:py-3.5 rounded-full md:rounded-[1.25rem] text-[9px] sm:text-[10px] md:text-xs uppercase font-bold tracking-[0.1em] md:tracking-[0.15em] transition-all duration-500 ${
+              activeCategory === category.title
+                ? "bg-black text-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] scale-100 md:scale-105"
+                : "glass text-secondary hover:text-black"
             }`}
           >
-            All
+            {category.title}
           </button>
-          {skillCategories.map((category) => (
-            <button
-              key={category.title}
-              onClick={() => setActiveCategory(category.title)}
-              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${
-                activeCategory === category.title
-                  ? "bg-blue-700 text-white shadow-lg scale-105"
-                  : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
-              }`}
-            >
-              {category.title}
-            </button>
-          ))}
-        </div>
-
-        {/* Skills Grid */}
-        <motion.div layout className="flex flex-wrap gap-3 justify-center">
-          <AnimatePresence mode='popLayout'>
-            {filteredSkills.map((skill) => (
-              <motion.span
-                layout
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.3 }}
-                whileHover={{ scale: 1.05 }}
-                key={skill}
-                className="px-4 py-2 bg-white border border-slate-200 text-slate-700 font-medium rounded-lg text-sm sm:text-base hover:border-blue-400 hover:text-blue-700 transition-colors cursor-default shadow-sm"
-              >
-                {skill}
-              </motion.span>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        ))}
       </div>
-    </section>
+
+      {/* Skills Grid */}
+      <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
+        <AnimatePresence mode='popLayout'>
+          {filteredSkills.map((skill) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ 
+                type: "spring",
+                damping: 25,
+                stiffness: 150,
+                mass: 1
+              }}
+              whileHover={{ y: -4, scale: 1.02, transition: { duration: 0.2 } }}
+              key={skill}
+              className="group h-[80px] glass rounded-2xl flex items-center justify-center px-6 py-4 cursor-default hover-glow relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-black/[0.01] opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="relative z-10 text-[10px] sm:text-[11px] md:text-[13px] font-bold tracking-tight text-secondary group-hover:text-black transition-colors duration-300 text-center leading-tight px-1 md:px-2">
+                {skill}
+              </span>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+    </div>
   );
 }

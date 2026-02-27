@@ -1,123 +1,114 @@
 'use client';
 
+import { motion } from 'framer-motion';
+
 export default function Experience() {
   const experiences = [
     {
       id: 1,
       position: 'Data Visualization Intern',
       company: 'Infosys Springboard',
-      logo: '/infosys_springboard_logo.jpg',
       period: 'Oct 2025 - Present',
-      duration: '4 mos',
       location: 'Remote',
-      description: 'Working as a Data Visualization Intern, creating compelling visualizations and dashboards to communicate data insights effectively.',
+      logo: '/infosys_springboard_logo.jpg',
+      description: 'Architecting interactive data visualisations and executive dashboards, facilitating data-driven decision making through clear information design.',
       skills: ['Data Visualization', 'Python', 'Tableau'],
     },
     {
       id: 2,
       position: 'Aspire Leaders Program',
       company: 'Aspire Institute',
-      logo: '/aspire_leaders_program_logo.jpg',
       period: 'Aug 2025 - Oct 2025',
-      duration: '3 mos',
       location: 'Remote',
-      description: 'Completed the Aspire Leaders Program, enhancing leadership, teamwork, and networking skills through global collaboration and community projects.',
-      skills: ['Leadership', 'Teamwork', 'Networking'],
+      logo: '/aspire_leaders_program_logo.jpg',
+      description: 'Intensive leadership development program focused on global collaboration, emotional intelligence, and professional networking.',
+      skills: ['Leadership', 'Networking', 'Global Collab'],
     },
     {
       id: 3,
-      position: 'Data Science with Python',
+      position: 'Data Science Intern',
       company: 'EISystems Technologies',
-      logo: '/EiSystems.jpg',
       period: 'Jun 2025 - Aug 2025',
-      duration: '3 mos',
       location: 'Remote',
-      description: 'Completed internship with training in Data Science using Python, gaining practical exposure to data analysis and related concepts.',
-      skills: ['Data Science', 'Python', 'Data Analysis'],
+      logo: '/EiSystems.jpg',
+      description: 'Applied statistical modeling and data mining techniques to derive actionable insights from complex datasets.',
+      skills: ['Data Science', 'Pandas', 'Analytic Modeling'],
     },
     {
       id: 4,
-      position: 'Artificial Intelligence Intern',
+      position: 'AI Intern',
       company: 'AICTE (IBM SkillsBuild)',
-      logo: '/aicte_neat_cell_logo.jpg',
       period: 'Jun 2025 - Jul 2025',
-      duration: '2 mos',
       location: 'Remote',
-      description: 'Internship in collaboration with Edunet Foundation & IBM SkillsBuild, gaining comprehensive knowledge in AI fundamentals and applications.',
-      skills: ['Artificial Intelligence', 'Machine Learning', 'IBM Cloud'],
+      logo: '/aicte_neat_cell_logo.jpg',
+      description: 'Hands-on training in artificial intelligence foundations, focusing on cloud-based deployment and intelligent agent design.',
+      skills: ['AI Foundations', 'IBM Cloud', 'NLP'],
     },
     {
       id: 5,
-      position: 'Artificial Intelligence & Machine Learning Intern',
+      position: 'AI & ML Intern',
       company: 'Elevate Labs',
-      logo: '/elavelate labs.jpg',
       period: 'May 2025 - Jun 2025',
-      duration: '2 mos',
-      location: 'Bhimavaram, Andhra Pradesh, India',
-      description: 'Completed AI & ML internship with focus on Machine Learning, Exploratory Data Analysis and advanced techniques. Certificate of Completion – Best Performer.',
-      skills: ['Machine Learning', 'Exploratory Data Analysis', 'Python'],
+      location: 'Bhimavaram, AP',
+      logo: '/elavelate labs.jpg',
+      description: 'Implemented machine learning pipelines for predictive analysis. Recognized as Best Performer for exceptional project delivery.',
+      skills: ['Machine Learning', 'EDA', 'Model Optimization'],
     },
   ];
 
   return (
-    <section id="experience" className="py-20 bg-slate-50 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold text-blue-700 mb-12 text-center">Experience</h2>
-        <div className="space-y-6">
-          {experiences.map((exp) => (
-            <div
-              key={exp.id}
-              className="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-lg transition-shadow p-6 sm:p-7"
-            >
-              <div className="flex gap-5 sm:gap-6 items-start">
-                <img
-                  src={exp.logo}
-                  alt={exp.company}
-                  className="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-xl flex-shrink-0"
-                />
+    <div className="relative max-w-6xl mx-auto pl-12 sm:pl-0">
+      {/* Timeline central line */}
+      <div className="absolute left-[19px] sm:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-black/10 to-transparent sm:-translate-x-1/2" />
 
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-xl font-bold text-slate-900 leading-snug">{exp.position}</h3>
-                  <p className="text-blue-700 font-semibold">{exp.company}</p>
+      <div className="space-y-24 sm:space-y-32">
+        {experiences.map((exp, index) => (
+          <motion.div
+            key={exp.id}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className={`relative flex flex-col sm:flex-row items-center group ${
+              index % 2 === 0 ? 'sm:flex-row-reverse' : ''
+            }`}
+          >
+            {/* Timeline Dot */}
+            <div className="absolute left-[-31px] sm:left-1/2 w-10 h-10 rounded-2xl glass-dark border border-black/5 z-20 sm:-translate-x-1/2 flex items-center justify-center group-hover:scale-110 group-hover:bg-black transition-all duration-500 shadow-2xl">
+               <div className="w-2 h-2 rounded-full bg-black group-hover:bg-white animate-pulse" />
+            </div>
 
-                  <div className="mt-3 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-6 text-slate-600 text-sm font-medium">
-                    <div className="flex items-center gap-2">
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <span>{exp.period}</span>
+            {/* Content Card */}
+            <div className={`w-full sm:w-[45%] transition-all duration-700`}>
+              <div className="glass p-6 md:p-10 rounded-3xl md:rounded-[3rem] hover-glow relative group/card">
+                <div className="block sm:hidden text-[9px] uppercase tracking-[0.3em] font-black text-black/40 mb-4 bg-black/5 inline-block px-3 py-1 rounded-full">
+                  {exp.period}
+                </div>
+                <div className="hidden sm:block absolute top-8 right-10 text-[10px] uppercase tracking-[0.3em] font-black text-black/10 group-hover/card:text-black/20 transition-colors">
+                  {exp.period}
+                </div>
+                
+                <div className="space-y-6 md:space-y-8">
+                  {/* Logo & Header */}
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6">
+                    <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-2xl p-2 md:p-3 flex items-center justify-center shadow-xl group-hover/card:scale-110 transition-transform duration-500 group-hover/card:bg-accent ring-1 ring-black/5 shrink-0">
+                      <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain" />
                     </div>
-
-                    <div className="flex items-center gap-2">
-                      <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-8V5a1 1 0 10-2 0v6a1 1 0 00.293.707l2 2a1 1 0 001.414-1.414L11 10.586z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span>{exp.duration}</span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span className="min-w-0 truncate">{exp.location}</span>
+                    <div className="space-y-1">
+                      <h3 className="text-xl md:text-2xl font-display font-bold group-hover/card:text-black transition-colors leading-tight break-words">{exp.position}</h3>
+                      <p className="text-accent text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">{exp.company}</p>
                     </div>
                   </div>
-
-                  <p className="mt-4 text-slate-700 leading-relaxed font-medium">{exp.description}</p>
-
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {exp.skills.map((skill, index) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1 bg-white text-blue-700 border border-slate-200 text-xs rounded-full font-semibold shadow-sm"
+                  
+                  <p className="text-secondary text-base md:text-lg leading-relaxed opacity-80 italic group-hover/card:opacity-100 transition-opacity">
+                    "{exp.description}"
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {exp.skills.map((skill, i) => (
+                      <span 
+                        key={i} 
+                        className="px-3 py-1.5 md:px-4 md:py-1.5 glass border-black/5 text-secondary text-[9px] md:text-[10px] rounded-xl font-bold uppercase tracking-widest group-hover/card:text-black group-hover/card:border-black/30 transition-all font-sans"
                       >
                         {skill}
                       </span>
@@ -126,9 +117,17 @@ export default function Experience() {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+
+            {/* Spacing for layout */}
+            <div className="hidden sm:block sm:w-[10%]" />
+            <div className="hidden sm:block sm:w-[35%] px-10">
+               <div className="opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-1000 select-none pointer-events-none scale-125 origin-center">
+                  <span className="text-[120px] font-black font-display text-black leading-none">0{index + 1}</span>
+               </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }
