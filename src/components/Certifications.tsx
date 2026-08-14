@@ -109,7 +109,7 @@ export default function Certifications() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-background/90 backdrop-blur-2xl"
+            className="fixed inset-0 z-[200] flex items-center justify-center p-3 sm:p-6 bg-background/90 backdrop-blur-2xl"
             onClick={(e) => e.target === e.currentTarget && closeModal()}
           >
             <motion.div
@@ -117,20 +117,20 @@ export default function Certifications() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 40 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-6xl max-h-[90vh] flex flex-col glass rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/10"
+              className="relative w-full max-w-6xl max-h-[92vh] flex flex-col glass rounded-[2rem] sm:rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/10"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="flex items-center justify-between px-8 py-4 border-b border-white/5 relative z-20 bg-white/80 backdrop-blur-md">
-                <div className="space-y-0.5">
-                  <p className="text-accent text-[10px] font-black uppercase tracking-[0.2em]">{openCert.issuer}</p>
-                  <h2 className="text-xl font-display font-bold tracking-tight">{openCert.title}</h2>
+              <div className="flex items-center justify-between px-4 sm:px-8 py-3 sm:py-4 border-b border-white/5 relative z-20 bg-white/80 backdrop-blur-md">
+                <div className="space-y-0.5 min-w-0 pr-2">
+                  <p className="text-accent text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] truncate">{openCert.issuer}</p>
+                  <h2 className="text-base sm:text-xl font-display font-bold tracking-tight truncate">{openCert.title}</h2>
                 </div>
                 <button
                   onClick={closeModal}
-                  className="w-10 h-10 rounded-xl glass hover:bg-black/5 flex items-center justify-center group transition-colors"
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl glass hover:bg-black/5 flex items-center justify-center group transition-colors shrink-0"
                 >
-                  <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>

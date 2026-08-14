@@ -213,22 +213,48 @@ export default function Projects() {
               </div>
 
               {/* Text Content */}
-              <div className="space-y-4 px-4 w-full">
+              <div className="space-y-4 px-1 sm:px-4 w-full">
                 <div className="flex flex-wrap gap-2">
                    {project.technologies.map((tech) => (
-                     <span key={tech} className="text-[10px] font-black uppercase tracking-widest text-zinc-400">
+                     <span key={tech} className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-zinc-400">
                         {tech}
                      </span>
                    ))}
                 </div>
                 
-                <h3 className="text-3xl md:text-5xl font-black tracking-tight group-hover:text-gradient transition-all duration-700">
+                <h3 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight group-hover:text-gradient transition-all duration-700 leading-tight">
                   {project.title}
                 </h3>
                 
-                <p className="text-xl text-secondary leading-relaxed max-w-xl opacity-80 group-hover:opacity-100 transition-opacity">
+                <p className="text-base sm:text-lg md:text-xl text-secondary leading-relaxed max-w-xl opacity-80 group-hover:opacity-100 transition-opacity">
                   {project.description}
                 </p>
+
+                {/* Mobile Action Buttons — Always visible on phones & tablets */}
+                <div className="flex flex-wrap items-center gap-3 pt-2 lg:hidden">
+                  {project.github && (
+                    <a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white rounded-full font-bold uppercase tracking-[0.15em] text-[10px] active:scale-95 shadow-md"
+                    >
+                      <Github className="w-3.5 h-3.5" />
+                      Source Code
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a 
+                      href={project.demo} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 glass text-black rounded-full font-bold uppercase tracking-[0.15em] text-[10px] active:scale-95 shadow-md border border-black/10"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      Live Demo
+                    </a>
+                  )}
+                </div>
               </div>
             </motion.div>
           );

@@ -128,10 +128,10 @@ export default function Memories() {
             </span>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-display font-black tracking-tight text-black">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black tracking-tight text-black">
             Memories & Milestones
           </h1>
-          <p className="text-secondary text-lg md:text-xl max-w-3xl opacity-80 leading-relaxed">
+          <p className="text-secondary text-base sm:text-lg md:text-xl max-w-3xl opacity-80 leading-relaxed">
             A chronological gallery of hackathons, international programs, startup pitching, and mentorship experiences shaping my growth.
           </p>
         </div>

@@ -48,35 +48,37 @@ export default function GithubActivity() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="glass rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 space-y-8 md:space-y-10"
+      className="glass rounded-[2rem] md:rounded-[3rem] p-5 sm:p-8 md:p-10 space-y-6 md:space-y-10 overflow-hidden"
     >
       {/* Profile header */}
-      <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
-        <img
-          src={user.avatar_url}
-          alt="Puli Bharat"
-          className="w-20 h-20 md:w-24 md:h-24 rounded-3xl object-cover ring-1 ring-black/5 shadow-xl shrink-0"
-        />
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 sm:gap-8">
+        <div className="flex items-center gap-4 sm:gap-6">
+          <img
+            src={user.avatar_url}
+            alt="Puli Bharat"
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl object-cover ring-1 ring-black/5 shadow-xl shrink-0"
+          />
 
-        <div className="flex-1 space-y-2">
-          <div className="flex items-center gap-3 flex-wrap">
-            <h4 className="text-2xl md:text-3xl font-black tracking-tight">Puli Bharat</h4>
-            <a
-              href="https://github.com/pulibharat"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-1.5 glass rounded-full text-[9px] uppercase font-black tracking-[0.2em] hover:bg-black hover:text-white transition-all duration-300"
-            >
-              View Profile
-            </a>
+          <div className="space-y-1.5 min-w-0">
+            <div className="flex items-center gap-3 flex-wrap">
+              <h4 className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight">Puli Bharat</h4>
+              <a
+                href="https://github.com/pulibharat"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-1 glass rounded-full text-[9px] uppercase font-black tracking-[0.2em] hover:bg-black hover:text-white transition-all duration-300"
+              >
+                View Profile
+              </a>
+            </div>
+            <p className="text-secondary text-xs sm:text-sm md:text-base opacity-70 max-w-md line-clamp-2 sm:line-clamp-none">
+              Open source contributor building AI-driven, real-world software.
+            </p>
           </div>
-          <p className="text-secondary text-sm md:text-base opacity-70 max-w-md">
-            Open source contributor building AI-driven, real-world software.
-          </p>
         </div>
 
         {/* Quick stat tiles */}
-        <div className="flex gap-6 sm:gap-8 pt-2 sm:pt-0">
+        <div className="flex justify-around sm:justify-end gap-6 sm:gap-8 pt-2 sm:pt-0 border-t sm:border-t-0 border-black/5">
           {stats.map((s) => (
             <div key={s.label} className="text-center min-w-[64px]">
               <p className="text-2xl md:text-3xl font-black tracking-tight tabular-nums">
@@ -92,16 +94,16 @@ export default function GithubActivity() {
 
       {/* Streak + Profile Views */}
       <div className="flex flex-col lg:flex-row items-center gap-6 pt-2 border-t border-black/5">
-        <div className="w-full lg:flex-1 overflow-x-auto pt-6">
+        <div className="w-full lg:flex-1 pt-4 sm:pt-6 overflow-hidden flex justify-center">
           {!streakError ? (
             <img
               src="https://github-readme-streak-stats-eight.vercel.app/?user=pulibharat&background=FFFFFF00&border=FFFFFF00&stroke=00000000&ring=16A34A&fire=16A34A&currStreakLabel=18181B&sideLabels=52525B&dates=A1A1AA&currStreakNum=000000&sideNums=000000&hide_border=true"
               alt="Puli Bharat's GitHub streak stats"
               onError={() => setStreakError(true)}
-              className="w-full min-w-[500px] lg:min-w-0 h-auto mx-auto"
+              className="w-full max-w-[495px] h-auto object-contain mx-auto"
             />
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-4 w-full">
               <div className="glass p-5 rounded-2xl text-center space-y-1">
                 <GitCommit className="w-5 h-5 mx-auto text-emerald-600 mb-1" />
                 <p className="text-2xl font-black">599+</p>
@@ -123,7 +125,7 @@ export default function GithubActivity() {
             </div>
           )}
         </div>
-        <div className="pt-6 lg:pt-0">
+        <div className="pt-2 lg:pt-0 shrink-0">
           <img
             src="https://komarev.com/ghpvc/?username=pulibharat&color=16a34a&style=flat&label=PROFILE+VIEWS"
             alt="Puli Bharat's profile view count"
@@ -133,15 +135,20 @@ export default function GithubActivity() {
       </div>
 
       {/* Contribution graph */}
-      <div className="pt-2 border-t border-black/5">
-        <p className="text-[10px] uppercase tracking-[0.3em] font-black text-zinc-400 mb-6 pt-6">
-          Contribution Graph
-        </p>
-        <div className="w-full overflow-x-auto">
+      <div className="pt-2 border-t border-black/5 space-y-3">
+        <div className="flex items-center justify-between">
+          <p className="text-[10px] uppercase tracking-[0.3em] font-black text-zinc-400 pt-3">
+            Contribution Graph
+          </p>
+          <span className="text-[9px] uppercase tracking-wider text-zinc-400 sm:hidden pt-3 font-bold">
+            Swipe →
+          </span>
+        </div>
+        <div className="w-full overflow-x-auto no-scrollbar rounded-2xl bg-white/40 p-2 sm:p-4 border border-black/5">
           <img
             src="https://ghchart.rshah.org/16a34a/pulibharat"
             alt="Puli Bharat's GitHub contribution graph"
-            className="w-full min-w-[600px] h-auto"
+            className="w-full min-w-[550px] sm:min-w-0 h-auto object-contain"
           />
         </div>
       </div>

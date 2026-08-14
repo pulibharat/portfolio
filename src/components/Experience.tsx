@@ -67,11 +67,11 @@ export default function Experience() {
   ];
 
   return (
-    <div className="relative max-w-6xl mx-auto pl-12 sm:pl-0">
+    <div className="relative max-w-6xl mx-auto pl-8 sm:pl-0">
       {/* Timeline central line */}
-      <div className="absolute left-[19px] sm:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-black/10 to-transparent sm:-translate-x-1/2" />
+      <div className="absolute left-[13px] sm:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-black/10 to-transparent sm:-translate-x-1/2" />
 
-      <div className="space-y-24 sm:space-y-32">
+      <div className="space-y-16 sm:space-y-32">
         {experiences.map((exp, index) => (
           <motion.div
             key={exp.id}
@@ -84,13 +84,13 @@ export default function Experience() {
             }`}
           >
             {/* Timeline Dot */}
-            <div className="absolute left-[-31px] sm:left-1/2 w-10 h-10 rounded-2xl glass-dark border border-black/5 z-20 sm:-translate-x-1/2 flex items-center justify-center group-hover:scale-110 group-hover:bg-black transition-all duration-500 shadow-2xl">
+            <div className="absolute left-[-21px] sm:left-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl glass-dark border border-black/5 z-20 sm:-translate-x-1/2 flex items-center justify-center group-hover:scale-110 group-hover:bg-black transition-all duration-500 shadow-2xl">
                <div className="w-2 h-2 rounded-full bg-black group-hover:bg-white animate-pulse" />
             </div>
 
             {/* Content Card */}
             <div className={`w-full sm:w-[45%] transition-all duration-700`}>
-              <div className="glass p-6 md:p-10 rounded-3xl md:rounded-[3rem] hover-glow relative group/card">
+              <div className="glass p-5 sm:p-8 md:p-10 rounded-3xl md:rounded-[3rem] hover-glow relative group/card">
                 <div className="block sm:hidden text-[9px] uppercase tracking-[0.3em] font-black text-black/40 mb-4 bg-black/5 inline-block px-3 py-1 rounded-full">
                   {exp.period}
                 </div>
@@ -98,27 +98,27 @@ export default function Experience() {
                   {exp.period}
                 </div>
                 
-                <div className="space-y-6 md:space-y-8">
+                <div className="space-y-5 md:space-y-8">
                   {/* Logo & Header */}
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6">
+                  <div className="flex flex-row items-center gap-4 md:gap-6">
                     <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-2xl p-2 md:p-3 flex items-center justify-center shadow-xl group-hover/card:scale-110 transition-transform duration-500 group-hover/card:bg-accent ring-1 ring-black/5 shrink-0">
                       <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain" />
                     </div>
-                    <div className="space-y-1">
-                      <h3 className="text-xl md:text-2xl font-display font-bold group-hover/card:text-black transition-colors leading-tight break-words">{exp.position}</h3>
-                      <p className="text-accent text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">{exp.company}</p>
+                    <div className="space-y-0.5 min-w-0">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-display font-bold group-hover/card:text-black transition-colors leading-tight break-words">{exp.position}</h3>
+                      <p className="text-accent text-[9px] sm:text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">{exp.company}</p>
                     </div>
                   </div>
                   
-                  <p className="text-secondary text-base md:text-lg leading-relaxed opacity-80 italic group-hover/card:opacity-100 transition-opacity">
+                  <p className="text-secondary text-sm sm:text-base md:text-lg leading-relaxed opacity-80 italic group-hover/card:opacity-100 transition-opacity">
                     "{exp.description}"
                   </p>
                   
-                  <div className="flex flex-wrap gap-2 pt-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
                     {exp.skills.map((skill, i) => (
                       <span 
                         key={i} 
-                        className="px-3 py-1.5 md:px-4 md:py-1.5 glass border-black/5 text-secondary text-[9px] md:text-[10px] rounded-xl font-bold uppercase tracking-widest group-hover/card:text-black group-hover/card:border-black/30 transition-all font-sans"
+                        className="px-2.5 py-1 sm:px-4 sm:py-1.5 glass border-black/5 text-secondary text-[8px] sm:text-[9px] md:text-[10px] rounded-xl font-bold uppercase tracking-widest group-hover/card:text-black group-hover/card:border-black/30 transition-all font-sans"
                       >
                         {skill}
                       </span>

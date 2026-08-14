@@ -35,24 +35,24 @@ export default function Education() {
           transition={{ duration: 1, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="group relative"
         >
-          <div className="glass p-10 rounded-[2.5rem] h-full flex flex-col items-start gap-8 hover-glow transition-all duration-700">
+          <div className="glass p-6 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] h-full flex flex-col items-start gap-6 sm:gap-8 hover-glow transition-all duration-700">
              {/* Header */}
              <div className="flex justify-between items-start w-full">
-                <div className="w-14 h-14 bg-white rounded-2xl p-3 flex items-center justify-center border border-black/5 shadow-xl group-hover:scale-110 transition-transform duration-700">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-2xl p-2.5 sm:p-3 flex items-center justify-center border border-black/5 shadow-xl group-hover:scale-110 transition-transform duration-700 shrink-0">
                   <img src={edu.logo} alt={edu.school} className="w-full h-full object-contain" />
                 </div>
                 <div className="text-right">
-                   <p className="text-[10px] uppercase tracking-[0.3em] font-black text-black mb-1">{edu.period}</p>
-                   <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-zinc-400">{edu.location}</p>
+                   <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] font-black text-black mb-1">{edu.period}</p>
+                   <p className="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] font-bold text-zinc-400">{edu.location}</p>
                 </div>
              </div>
 
              {/* Content */}
-             <div className="space-y-3 flex-grow">
-                <h3 className="text-3xl md:text-4xl font-black tracking-tight leading-[1] group-hover:text-gradient transition-all duration-700">
+             <div className="space-y-2 sm:space-y-3 flex-grow">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight group-hover:text-gradient transition-all duration-700">
                   {edu.school}
                 </h3>
-                <p className="text-lg md:text-xl font-medium text-secondary opacity-80 group-hover:opacity-100 transition-opacity">
+                <p className="text-base sm:text-lg md:text-xl font-medium text-secondary opacity-80 group-hover:opacity-100 transition-opacity">
                   {edu.program}
                 </p>
              </div>
