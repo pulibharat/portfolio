@@ -55,12 +55,12 @@ export default function About() {
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-5xl"
       >
-        <div className="text-2xl md:text-4xl font-black leading-[1.1] tracking-tight text-secondary space-y-10 italic">
+        <div className="text-2xl md:text-4xl font-black leading-[1.1] tracking-tight text-secondary space-y-10">
           <p>
-            Currently pursuing <span className="text-black font-black not-italic">Computer Science & Mathematics</span> at VIT Bhimavaram. Obsessed with the junction where <span className="text-black not-italic">Machine Intel</span> meets real-world utility.
+            Aspiring <span className="text-black font-black">AI/ML Engineer</span> and B.Tech student in <span className="text-black font-black">Computer Science & Mathematics</span> at Vishnu Institute of Technology, building intelligent real-world solutions with AI, Machine Learning, and Computer Vision.
           </p>
-          <p className="not-italic text-lg md:text-xl font-medium tracking-normal text-zinc-400 max-w-2xl leading-relaxed">
-            I architect solutions that bridge the gap between theoretical models and practical deployment. From autonomous vision systems to strategic analytics, my goal is to build software that is both <span className="text-black font-bold">computationally superior</span> and <span className="text-black font-bold">human-centric</span>.
+          <p className="text-lg md:text-xl font-medium tracking-normal text-zinc-400 max-w-2xl leading-relaxed">
+            Hands-on with <span className="text-black font-bold">Python, PyTorch, and OpenCV</span> — from CNNs and RNNs to DQN and reinforcement learning. Currently exploring advanced AI systems and contributing to Open Source through GSoC and Open Source Global Connect.
           </p>
         </div>
       </motion.div>

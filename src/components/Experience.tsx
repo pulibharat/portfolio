@@ -6,6 +6,16 @@ export default function Experience() {
   const experiences = [
     {
       id: 1,
+      position: 'Summer Research Intern',
+      company: 'VLED Lab, IIT Ropar',
+      period: 'May 2026 - Present',
+      location: 'Remote',
+      logo: '/iitropar_logo.jpg',
+      description: 'Selected for the Summer Internship 2026 at VICHARANASHALA Lab for Education Design (VLED Lab), IIT Ropar, after a rigorous multi-phase evaluation. Contributing to India-centric, open-source education technology with a multidisciplinary team, following structured milestones, documentation, and mentor feedback.',
+      skills: ['Open Source', 'Research', 'Ed-Tech'],
+    },
+    {
+      id: 2,
       position: 'Data Visualization Intern',
       company: 'Infosys Springboard',
       period: 'Oct 2025 - Present',
@@ -15,7 +25,7 @@ export default function Experience() {
       skills: ['Data Visualization', 'Python', 'Tableau'],
     },
     {
-      id: 2,
+      id: 3,
       position: 'Aspire Leaders Program',
       company: 'Aspire Institute',
       period: 'Aug 2025 - Oct 2025',
@@ -25,7 +35,7 @@ export default function Experience() {
       skills: ['Leadership', 'Networking', 'Global Collab'],
     },
     {
-      id: 3,
+      id: 4,
       position: 'Data Science Intern',
       company: 'EISystems Technologies',
       period: 'Jun 2025 - Aug 2025',
@@ -35,7 +45,7 @@ export default function Experience() {
       skills: ['Data Science', 'Pandas', 'Analytic Modeling'],
     },
     {
-      id: 4,
+      id: 5,
       position: 'AI Intern',
       company: 'AICTE (IBM SkillsBuild)',
       period: 'Jun 2025 - Jul 2025',
@@ -45,7 +55,7 @@ export default function Experience() {
       skills: ['AI Foundations', 'IBM Cloud', 'NLP'],
     },
     {
-      id: 5,
+      id: 6,
       position: 'AI & ML Intern',
       company: 'Elevate Labs',
       period: 'May 2025 - Jun 2025',

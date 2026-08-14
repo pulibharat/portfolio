@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { useRef } from 'react';
 
 import { Github, Linkedin } from 'lucide-react';
@@ -16,6 +16,25 @@ export default function Hero() {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 5]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  // Pointer-reactive tilt for the portrait card
+  const tiltX = useMotionValue(0);
+  const tiltY = useMotionValue(0);
+  const springTiltX = useSpring(tiltX, { stiffness: 150, damping: 20, mass: 0.5 });
+  const springTiltY = useSpring(tiltY, { stiffness: 150, damping: 20, mass: 0.5 });
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    tiltY.set(px * 16);
+    tiltX.set(py * -16);
+  };
+
+  const handlePointerLeave = () => {
+    tiltX.set(0);
+    tiltY.set(0);
+  };
 
   // Custom Medium Icon as SVG since lucide doesn't include it natively easily
   const MediumIcon = ({ className }: { className?: string }) => (
@@ -110,11 +129,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-8"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6"
             >
               <a 
                 href="#projects" 
-                className="group relative px-12 py-6 bg-black text-white rounded-[2rem] font-bold overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-2xl"
+                className="group relative px-10 py-5 bg-black text-white rounded-[2rem] font-bold overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-2xl"
               >
                 <span className="relative z-10 uppercase tracking-[0.2em] text-[10px]">My Projects</span>
                 <div className="absolute inset-x-0 bottom-0 h-0 bg-zinc-800 transition-all group-hover:h-full -z-0" />
@@ -122,11 +141,34 @@ export default function Hero() {
               
               <a 
                 href="#contact" 
-                className="group relative px-12 py-6 glass text-black rounded-[2rem] font-bold overflow-hidden transition-all hover:scale-105 active:scale-95 hover:shadow-2xl hover:text-white"
+                className="group relative px-10 py-5 glass text-black rounded-[2rem] font-bold overflow-hidden transition-all hover:scale-105 active:scale-95 hover:shadow-2xl hover:text-white"
               >
                 <span className="relative z-10 uppercase tracking-[0.2em] text-[10px]">Contact</span>
                 <div className="absolute inset-x-0 bottom-0 h-0 bg-black transition-all group-hover:h-full -z-0" />
               </a>
+            </motion.div>
+
+            {/* Quick Milestone Highlights */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-2.5"
+            >
+              {[
+                { label: 'DeepHack 1st Place', icon: '🏆' },
+                { label: 'IIT Ropar Research Intern', icon: '🔬' },
+                { label: 'Spark Tank Finalist', icon: '🚀' },
+                { label: 'Aspire Leaders Alum', icon: '🌐' },
+              ].map((chip) => (
+                <span
+                  key={chip.label}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 glass rounded-full text-[10px] font-bold text-secondary tracking-wide border border-black/5 hover:border-black/20 hover:text-black transition-all"
+                >
+                  <span>{chip.icon}</span>
+                  <span>{chip.label}</span>
+                </span>
+              ))}
             </motion.div>
           </div>
 
@@ -138,39 +180,60 @@ export default function Hero() {
             transition={{ duration: 1.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative aspect-[4/5] w-full max-w-[500px] mx-auto group">
+            <motion.div
+              onPointerMove={handlePointerMove}
+              onPointerLeave={handlePointerLeave}
+              style={{ rotateX: springTiltX, rotateY: springTiltY, transformPerspective: 1200 }}
+              className="relative aspect-[4/5] w-full max-w-[500px] mx-auto group"
+            >
               <div className="absolute inset-0 rounded-[4rem] bg-zinc-100 p-px">
-                <div className="absolute inset-0 rounded-[4rem] bg-white shadow-2xl overflow-hidden border border-black/[0.03]">
-                  {/* Decorative Elements inside slot */}
-                  <div className="absolute top-0 right-0 p-12 opacity-[0.03]">
-                    <span className="text-[120px] font-black leading-none uppercase select-none">PB</span>
-                  </div>
-                  
-                  {/* Content for the slot */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center group-hover:scale-105 transition-transform duration-1000">
-                    <div className="w-24 h-24 glass rounded-[2.5rem] flex items-center justify-center mb-8 shadow-xl">
-                      <svg className="w-10 h-10 text-black translate-y-[-2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" d="M12 4v16m8-8H4" />
-                      </svg>
+                <div className="absolute inset-0 rounded-[4rem] bg-white shadow-2xl border border-black/[0.03]">
+                  {/* Photo layer — clipped to the rounded frame */}
+                  <div className="absolute inset-0 rounded-[4rem] overflow-hidden">
+                    {/* Decorative Elements inside slot */}
+                    <div className="absolute top-0 right-0 p-12 opacity-[0.03] z-10 pointer-events-none">
+                      <span className="text-[120px] font-black leading-none uppercase select-none">PB</span>
                     </div>
-                    <p className="text-[10px] uppercase tracking-[0.4em] font-black text-secondary mb-2">Subject Portrait</p>
-                    <p className="text-[10px] italic text-zinc-400">Refining visual assets for deployment</p>
+
+                    {/* Portrait */}
+                    <img
+                      src="/profile.jpg"
+                      alt="Puli Bharat"
+                      className="absolute inset-0 w-full h-full object-cover object-top grayscale-[10%] contrast-[1.05] scale-[1.03] group-hover:scale-100 group-hover:grayscale-0 transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/15" />
+
+                    {/* Status Pill */}
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                      className="absolute top-6 left-6 flex items-center gap-2 px-4 py-2 rounded-full shadow-xl backdrop-blur-xl bg-black/40 border border-white/10"
+                    >
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="text-[9px] uppercase tracking-[0.25em] font-black text-white">Open to Work</span>
+                    </motion.div>
+
+                    {/* Name plate */}
+                    <div className="absolute bottom-6 left-6 right-6 md:hidden">
+                      <p className="text-white text-[10px] uppercase tracking-[0.3em] font-black">Puli Bharat</p>
+                    </div>
                   </div>
 
-                  {/* Glass Card on top */}
-                  <motion.div 
+                  {/* Glass Card floating on top — outside the clip so it isn't cropped */}
+                  <motion.div
                     animate={{ x: [0, 5, 0], y: [0, -5, 0] }}
                     transition={{ duration: 4, repeat: Infinity }}
-                    className="absolute -bottom-6 -right-6 w-48 p-6 glass rounded-3xl shadow-2xl hidden md:block"
+                    className="absolute -bottom-6 -right-6 w-48 p-6 glass rounded-3xl shadow-2xl hidden md:block z-20"
                   >
                      <div className="space-y-3">
                         <div className="h-1 w-8 bg-black rounded-full" />
-                        <p className="text-[10px] leading-relaxed font-bold">Currently Architecting: <br /> <span className="text-zinc-400">AI Analytics 2.0</span></p>
+                        <p className="text-[10px] leading-relaxed font-bold">Currently Pursuing: <br /> <span className="text-zinc-400">CS & Mathematics, VIT</span></p>
                      </div>
                   </motion.div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
         </div>

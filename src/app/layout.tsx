@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import ScrollProgress from "@/components/ScrollProgress";
+import BackToTop from "@/components/BackToTop";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -15,8 +17,31 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Puli Bharat - AI/ML Engineer & Web Developer",
-  description: "Portfolio of Puli Bharat - AI/ML Engineer, Computer Vision Expert, and Full Stack Developer",
+  title: "Puli Bharat — AI/ML Engineer & Creative Developer",
+  description: "Portfolio of Puli Bharat — AI/ML Engineer, Computer Vision Developer, and Open Source Contributor specializing in Deep Learning, PyTorch, and OpenCV.",
+  keywords: [
+    "Puli Bharat",
+    "AI/ML Engineer",
+    "Computer Vision",
+    "Deep Learning",
+    "PyTorch",
+    "OpenCV",
+    "Full Stack Developer",
+    "IIT Ropar Intern",
+    "Portfolio"
+  ],
+  authors: [{ name: "Puli Bharat", url: "https://github.com/pulibharat" }],
+  openGraph: {
+    title: "Puli Bharat — AI/ML Engineer & Creative Developer",
+    description: "Engineering the future of AI & Computer Vision. Explore projects in Deep Q-Networks, Neural Style Transfer, and intelligent visual systems.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Puli Bharat — AI/ML Engineer & Creative Developer",
+    description: "Engineering the future of AI & Computer Vision. Explore projects in Deep Q-Networks, Neural Style Transfer, and intelligent visual systems.",
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +53,9 @@ export default function RootLayout({
     <html lang="en" className={`${jakarta.variable} ${inter.variable}`}>
       <body className="antialiased" suppressHydrationWarning>
         <div className="noise" />
+        <ScrollProgress />
         {children}
+        <BackToTop />
         <Analytics />
       </body>
     </html>

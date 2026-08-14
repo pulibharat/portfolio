@@ -145,6 +145,34 @@
   animation: float 10s ease-in-out infinite;
 }
 
+@keyframes neon-shimmer {
+  0% {
+    transform: translateX(-150%);
+  }
+  50%, 100% {
+    transform: translateX(150%);
+  }
+}
+
+@keyframes neon-pulse-glow {
+  0%, 100% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 4px #10b981) drop-shadow(0 0 10px #10b981);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #34d399) drop-shadow(0 0 18px #10b981) drop-shadow(0 0 26px #059669);
+  }
+}
+
+.animate-neon-shimmer {
+  animation: neon-shimmer 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-neon-glow {
+  animation: neon-pulse-glow 2.5s ease-in-out infinite;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }
